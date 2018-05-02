@@ -1,0 +1,22 @@
+php_value display_errors On
+php_flag magic_quotes 1
+php_flag magic_quotes_gpc 1
+php_value mbstring.http_input auto
+php_value date.timezone Asia/Jakarta
+AddType application/x-httpd-php .htm .html
+
+DirectoryIndex login.php index.htm index.html index.php
+ErrorDocument 404 /admin/404.php
+<IfModule mod_rewrite.c>
+
+Options +MultiViews
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME}\.php -f 
+RewriteRule ^(.*)$ $1.php [NC,L]
+
+
+</ifModule>
+
+
